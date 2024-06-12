@@ -1,1 +1,12 @@
-@import "~bootstrap/dist/css/bootstrap.min.css";
+.card {
+  aspect-ratio: 2.2/3;
+}
+.container-fluid {
+  margin-top: 10rem;
+}
+.element {
+  font-size: 7rem;
+}
+.suitInCard {
+  line-height: 85%;
+}

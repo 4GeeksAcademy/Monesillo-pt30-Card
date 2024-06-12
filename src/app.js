@@ -1,16 +1,10 @@
-/* eslint-disable */
 import "bootstrap";
 import "./style.css";
 
-
 window.onload = function() {
-  window.onload = () => {
-    document.querySelector(".card").classList.add(genRandSuit());
-    document.querySelector(".card").innerHTML = genRandNumb();
-  };
-  
-  let genRandNumb = () => {
-    let numbers = [
+  const randomCard = () => {
+    let suit = ["♠", "♥", "♣", "♦"];
+    let numberCard = [
       "A",
       "2",
       "3",
@@ -20,18 +14,25 @@ window.onload = function() {
       "7",
       "8",
       "9",
-      "10",
       "J",
       "Q",
       "K"
     ];
-    let indexNumbers = Math.floor(Math.random() * numbers.length);
-    return numbers[indexNumbers];
+
+    const randomArrayValue = array => {
+      return array[Math.floor(Math.random() * array.length)];
+    };
+
+    const cardNumberElement = document.getElementById("numberInCard");
+    cardNumberElement.innerHTML = randomArrayValue(numberCard);
+
+    let randomSuit = randomArrayValue(suit);
+    const color = randomSuit === "♥" || randomSuit === "♦" ? "red" : "black";
+    const cardSuitElement = document.querySelectorAll(".suitInCard");
+    cardSuitElement.forEach(suit => {
+      suit.style.color = color;
+      suit.innerHTML = randomSuit;
+    });
   };
-  
-  let genRandSuit = () => {
-    let suit = ["diamond", "spade", "heart", "club"];
-    let indexSuit = Math.floor(Math.random() * suit.length);
-    return suit[indexSuit];
-  }
-}
+  randomCard();
+};
